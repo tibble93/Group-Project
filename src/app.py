@@ -2,13 +2,22 @@
 # It will integrate the inventory management and data handling functionalities.
 # The application will provide a user interface to interact with the inventory. 
 #------------------------------------------------------------------------------------------
+# Import necessary modules
 from flask import Flask, render_template
 
-app = Flask(__name__)   
+#Initialize the Flask application
+#the app variable is an instance of the Flask class
+app = Flask(__name__)
 
-@app.route('/')
+#Define routes for the web application
+# ("/") represents the home page of the application
+# When a user accesses the home page, the index function is called
+#The index function renders the "index.html" template
+#
+@app.route("/")
 def index():
     return render_template("index.html")
 
+#This block ensures that the application runs only if this script is executed directly
 if __name__ == '__main__':
     app.run(debug=True) 
