@@ -17,6 +17,23 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+
+@app.route("/inventory")
+def view_inventory():
+    return "Inventory Page under construction"
+
+@app.route("/remove")
+def remove_item():
+    return "Remove Item Page under construction"
+
+@app.route("/add")
+def add_item():
+    return "Add New Item Page under construction"
+
+@app.route("/update")
+def update_item():
+    return "Update Item Page under construction"
+
 #This block ensures that the application runs only if this script is executed directly
 if __name__ == '__main__':
     app.run(debug=True) 
