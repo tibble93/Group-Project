@@ -4,3 +4,4 @@
 # The inventory will be stored in a dictionary for easy access and manipulation.
 # The script will also include functions to calculate the total value of the inventory.
 #------------------------------------------------------------------------------------------
+
