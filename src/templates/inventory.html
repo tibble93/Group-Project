@@ -7,33 +7,35 @@
 
     
 <body>
-    <h1>Inventory</h1>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Unit ID</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Expiration Date</th>
-                <th>Source</th>
-                <th>Size</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for unit in item_units %}
-                {% set item_type = item_types.get(unit.type_id) %}
+    <div class="inventory-wrapper">
+        <h1>Inventory</h1>
+
+        <table border="1">
+            <thead>
                 <tr>
-                    <td>{{ unit.unit_id }}</td>
-                    <td>{{ item_type.name if item_type else "Unknown" }}</td>
-                    <td>{{ item_type.category if item_type else "Unknown" }}</td>
-                    <td>{{ unit.exp_date }}</td>
-                    <td>{{ unit.source }}</td>
-                    <td>{{ unit.size }}</td>
+                    <th>Item ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Expiration Date</th>
+                    <th>Source</th>
+                    <th>Quantity</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+                {% for unit in item_units %}
+                    {% set item_type = item_types.get(unit.type_id) %}
+                    <tr>
+                        <td>{{ unit.unit_id }}</td>
+                        <td>{{ item_type.name if item_type else "Unknown" }}</td>
+                        <td>{{ item_type.category if item_type else "Unknown" }}</td>
+                        <td>{{ unit.exp_date }}</td>
+                        <td>{{ unit.source }}</td>
+                        <td>{{ unit.size }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
