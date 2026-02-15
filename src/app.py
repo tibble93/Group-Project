@@ -27,15 +27,15 @@ def index():
 @app.route("/inventory")
 def view_inventory():
     item_types = {
-        1: ItemType(1, "Rice", "Food"),
+        1: ItemType(1, "Apples", "Food"),
         2: ItemType(2, "Blanket", "Clothing")
     }
 
     item_units = [
-        ItemUnit(101, 1, "12/31/2025", "Donation", "Rice bag", 50),
+        ItemUnit(101, 1, "12/31/2025", "Donation", "Apples bag", 50),
         ItemUnit(102, 2, "N/A", "Community Drive", "Winter blanket", 20)
     ]   
-    
+
     return render_template(
         "inventory.html",
         item_units=item_units,
