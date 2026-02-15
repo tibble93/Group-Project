@@ -6,7 +6,7 @@
 from flask import Flask, render_template
 
 import inventory
-
+#python src/app.py
 #Initialize the Flask application
 #the app variable is an instance of the Flask class
 app = Flask(__name__)
