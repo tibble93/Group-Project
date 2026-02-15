@@ -5,6 +5,8 @@
 # Import necessary modules
 from flask import Flask, render_template
 
+import inventory
+
 #Initialize the Flask application
 #the app variable is an instance of the Flask class
 app = Flask(__name__)
@@ -19,7 +21,7 @@ def index():
 
 @app.route("/inventory")
 def view_inventory():
-    return "Inventory Page under construction"
+    return render_template("inventory.html")
 
 @app.route("/remove")
 def remove_item():
