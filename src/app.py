@@ -6,6 +6,11 @@
 from flask import Flask, render_template
 
 import inventory
+from itemType import ItemType #Import the ItemType class from the itemType module made by Andrew
+from itemUnit import ItemUnit #Import the ItemUnit class from the itemUnit module made by Andrew
+
+
+
 #python src/app.py
 #Initialize the Flask application
 #the app variable is an instance of the Flask class
@@ -21,8 +26,21 @@ def index():
 
 @app.route("/inventory")
 def view_inventory():
-    return render_template("inventory.html")
+    item_types = {
+        1: ItemType(1, "Rice", "Food"),
+        2: ItemType(2, "Blanket", "Clothing")
+    }
 
+    item_units = [
+        ItemUnit(101, 1, "12/31/2025", "Donation", "Rice bag", 50),
+        ItemUnit(102, 2, "N/A", "Community Drive", "Winter blanket", 20)
+    ]   
+    
+    return render_template(
+        "inventory.html",
+        item_units=item_units,
+        item_types=item_types
+    )
 @app.route("/remove")
 def remove_item():
     return "Remove Item Page under construction"
