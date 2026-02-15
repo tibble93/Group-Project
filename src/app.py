@@ -32,7 +32,7 @@ def view_inventory():
     }
 
     item_units = [
-        ItemUnit(101, 1, "12/31/2025", "Donation", "Apples bag", 50),
+        ItemUnit(101, 1, "12/31/2025", "Donation", "Apples bag", 100),
         ItemUnit(102, 2, "N/A", "Community Drive", "Winter blanket", 20)
     ]   
 
