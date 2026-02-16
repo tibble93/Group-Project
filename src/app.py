@@ -70,6 +70,17 @@ def add_item():
 
     return redirect(url_for("view_inventory"))
 
+@app.route("/remove_items", methods=['POST'])
+def remove_items():
+    selected_items = request.form.getlist("selected_items")
+
+    if selected_items:
+        inventory.remove_multiple_items(selected_items)
+
+    
+
+    return redirect(url_for("view_inventory"))
+
 @app.route("/update")
 def update_item():
     return "Update Item Page under construction"

@@ -20,6 +20,11 @@ class Inventory:
         unit = ItemUnit(unit_id, type_id, exp_date, source, description, quantity)
         self.item_units.append(unit)
 
+    def remove_multiple_items(self, unit_ids):
+        self.item_units = [
+            unit for unit in self.item_units 
+            if str(unit.unit_id) not in unit_ids]
+
     def get_item_types(self):
         return self.item_types
     

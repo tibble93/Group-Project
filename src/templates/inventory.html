@@ -17,13 +17,16 @@
             <input type="date" name="exp_date" placeholder="Expiration Date" required>
             <input type="text" name="source" placeholder="Source" required>
             <input type="number" name="quantity" placeholder="Quantity" required>
-            <button type="submit">Add Item</button>
-            <button type="delete">Remove Checked Items</button>
+            <button type="submit">Add Item</button>    
         </form>
+
+    <form method="POST" action="{{ url_for('remove_items') }}">
+
         <div class="table_container">
             <table class="inventory_table">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Item ID</th>
                         <th>Name</th>
                         <th>Category</th>
@@ -36,6 +39,7 @@
                     {% for unit in item_units %}
                         {% set item_type = item_types.get(unit.type_id) %}
                         <tr>
+                            <td><input type="checkbox" name="selected_items" value="{{ unit.unit_id }}"></td>
                             <td>{{ unit.unit_id }}</td>
                             <td>{{ item_type.name if item_type else "Unknown" }}</td>
                             <td>{{ item_type.category if item_type else "Unknown" }}</td>
@@ -48,6 +52,11 @@
                 </tbody>
             </table>
         </div>
+        <button type="submit" onclick="return confirm('Are you sure you want to remove the selected items?')">
+            Remove Selected Items</button>
+
+
+    </form>   
     </div>
 </body>
 </html>
