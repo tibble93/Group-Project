@@ -37,7 +37,7 @@ def view_inventory():
         ItemUnit(101, 1, "12/31/2025", "Donation", "Apples bag", 100),
         ItemUnit(102, 2, "N/A", "Community Drive", "Winter blanket", 20),
         ItemUnit(103, 3, "12/31/2024", "Donation", "Canned beans box", 50),
-        ItemUnit(104) 4, "5/24/2027", "Donation", "Water bottles pack", 200)
+        ItemUnit(104, 4, "5/24/2027", "Donation", "Water bottles pack", 200)
     ]   
 
     return render_template(
