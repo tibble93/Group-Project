@@ -7,10 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=2.0">
 </head>
 
 <body>
+
+
     <div class="container">
         <div class="header">
             <h2>Welcome to the Inventory Management System</h2>
@@ -21,12 +23,16 @@
         <div class="buttons">
 <!-- Link to add a new item -->
             <a href="{{ url_for('view_inventory') }}">
-                <button>View Inventory</button>   
+                <button>Manage Inventory</button>   
             </a>
 <!-- Link to update an item -->
-            <a href="/update">
-                <button>Update Items</button>   
+            <a href="/login">
+                <button>Login</button>   
             </a>
+
+
+
+            </div>
         </div>
     </div>
 </body>
