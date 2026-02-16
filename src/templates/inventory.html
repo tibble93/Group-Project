@@ -11,6 +11,15 @@
     <div class="inventory-wrapper">
         <h1>Inventory Database</h1>
 
+        <form method="POST" action="{{ url_for('add_item')}}">
+            <input type="text" name="name" placeholder="Item Name" required>
+            <input type="text" name="category" placeholder="Category" required>
+            <input type="date" name="exp_date" placeholder="Expiration Date" required>
+            <input type="text" name="source" placeholder="Source" required>
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <button type="submit">Add Item</button>
+        </form>
+
         <table border="1">
             <thead>
                 <tr>

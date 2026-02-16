@@ -5,16 +5,27 @@
 # Import necessary modules
 from flask import Flask, render_template
 
-import inventory
+from inventory import Inventory 
+#from data_management import DataManagement 
 from itemType import ItemType #Import the ItemType class from the itemType module made by Andrew
 from itemUnit import ItemUnit #Import the ItemUnit class from the itemUnit module made by Andrew
-
 
 
 #python src/app.py
 #Initialize the Flask application
 #the app variable is an instance of the Flask class
 app = Flask(__name__)
+
+inventory = Inventory()
+
+
+inventory.add_item_type(1, "Canned Beans", "Food")
+inventory.add_item_type(2, "Rice", "Food")
+
+inventory.add_item_unit(1, 1, "2024-12-31", "Donation", "Canned Beans from local food drive", 100)
+inventory.add_item_unit(2, 2, "2025-01-31", "Purchase", "Rice purchased from supplier", 200)    
+
+ #Create an instance of the Inventory class to manage our inventory data 
 
 #Define routes for the web application
 # ("/") represents the home page of the application
@@ -26,24 +37,10 @@ def index():
 
 @app.route("/inventory")
 def view_inventory():
-    item_types = {
-        1: ItemType(1, "Apples", "Food"),
-        2: ItemType(2, "Blanket", "Clothing"),
-        3: ItemType(3, "Canned Beans", "Food"),
-        4: ItemType(4, "Water Bottles", "Beverages" )
-    }
-
-    item_units = [
-        ItemUnit(101, 1, "12/31/2025", "Donation", "Apples bag", 100),
-        ItemUnit(102, 2, "N/A", "Community Drive", "Winter blanket", 20),
-        ItemUnit(103, 3, "12/31/2024", "Donation", "Canned beans box", 50),
-        ItemUnit(104, 4, "5/24/2027", "Donation", "Water bottles pack", 200)
-    ]   
-
     return render_template(
         "inventory.html",
-        item_units=item_units,
-        item_types=item_types
+        item_units=inventory.get_item_units(),
+        item_types=inventory.get_item_types()
     )
 @app.route("/remove")
 def remove_item():
