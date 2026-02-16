@@ -22,6 +22,22 @@ body {
     margin-bottom: 30px;
 }
 
+.inventory_table {
+    border-collapse: collapse;
+    width: 80%;
+    background-color: antiquewhite;
+    color: black;
+    border-radius: 10px;
+    overflow:hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.table_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 button {
     padding: 8px 12px;
     margin-right: 5px;
