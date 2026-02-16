@@ -4,6 +4,7 @@
 #------------------------------------------------------------------------------------------
 # Import necessary modules
 from flask import Flask, render_template
+from flask import request, redirect, url_for
 
 from inventory import Inventory 
 #from data_management import DataManagement 
@@ -46,9 +47,28 @@ def view_inventory():
 def remove_item():
     return "Remove Item Page under construction"
 
-@app.route("/add")
+@app.route("/add", methods=['POST'])
 def add_item():
-    return "Add New Item Page under construction"
+    name = request.form["name"]
+    category = request.form["category"]
+    exp_date = request.form["exp_date"]
+    source = request.form["source"]
+    quantity = int(request.form["quantity"])
+
+    type_id = len(inventory.item_types) + 1
+    inventory.add_item_type(type_id, name, category)
+
+    unit_id = len(inventory.item_units) + 1
+    inventory.add_item_unit(
+        unit_id,
+        type_id,
+        exp_date,
+        source,
+        name,
+        quantity
+    )
+
+    return redirect(url_for("view_inventory"))
 
 @app.route("/update")
 def update_item():
