@@ -19,12 +19,18 @@ app = Flask(__name__)
 
 inventory = Inventory()
 
-
+#These are purely placeholder items
 inventory.add_item_type(1, "Canned Beans", "Food")
 inventory.add_item_type(2, "Rice", "Food")
+inventory.add_item_type(3, "Peanut Butter", "Food")
+inventory.add_item_type(4, "Tuna", "Food")
+inventory.add_item_type(5, "Bottled Water", "Beverage")
 
 inventory.add_item_unit(1, 1, "2024-12-31", "Donation", "Canned Beans from local food drive", 100)
-inventory.add_item_unit(2, 2, "2025-01-31", "Purchase", "Rice purchased from supplier", 200)    
+inventory.add_item_unit(2, 2, "2025-01-31", "Purchase", "Rice purchased from supplier", 50) 
+inventory.add_item_unit(3, 3, "2026-04-22", "Donation", "Peanut Butter donated from supplier", 25) 
+inventory.add_item_unit(4, 4, "2029-07-11", "Donation", "Tuna donated from supplier", 40) 
+inventory.add_item_unit(5, 5, "2030-05-15", "Donation", "Water donated from local food drive", 60)
 
  #Create an instance of the Inventory class to manage our inventory data 
 
