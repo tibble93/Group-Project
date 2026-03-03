@@ -7,3 +7,13 @@ class ItemUnit:
         self.source = source
         self.description = description
         self.size = size
+
+    def to_dict(self):
+        return {
+            "unit_id": self.unit_id,
+            "type_id": self.type_id,
+            "exp_date": self.exp_date,
+            "source": self.source,
+            "description": self.description,
+            "size": self.size
+        }

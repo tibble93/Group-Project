@@ -7,10 +7,27 @@
 from itemType import ItemType 
 from itemUnit import ItemUnit   
 
+from data_management import load_data, save_data
+from itemUnit import ItemUnit
+
 class Inventory:
     def __init__(self):
         self.item_types = {}
-        self.item_units = []    
+        self.item_units = []
+        self._load_from_storage()
+
+    def _load_from_storage(self):
+        data = load_data()
+        for item_id, item in data.items():
+            self.item_units.append(ItemUnit(
+                item["unit_id"],
+                item["type_id"],
+                item["exp_date"],
+                item["source"],
+                item["description"],
+                item["size"]
+            )
+        ) 
     
     def add_item_type(self, type_id, name, category):
         self.item_types[type_id] = ItemType(type_id, name, category)
@@ -19,11 +36,17 @@ class Inventory:
 
         unit = ItemUnit(unit_id, type_id, exp_date, source, description, quantity)
         self.item_units.append(unit)
+        self._save_to_storage()
+
+    def _save_to_storage(self):
+        data = {str(unit.unit_id): unit.to_dict() for unit in self.item_units}
+        save_data(data)
 
     def remove_multiple_items(self, unit_ids):
         self.item_units = [
             unit for unit in self.item_units 
             if str(unit.unit_id) not in unit_ids]
+        self._save_to_storage()
 
     def get_item_types(self):
         return self.item_types
